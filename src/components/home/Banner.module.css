@@ -1,0 +1,75 @@
+.banner {
+    width: 100%;
+    height: 400px;
+    padding: 30px;
+    border-radius: 30px;
+    box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.50);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.banner__info {
+    max-width: 490px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+}
+
+.banner__text {
+    color: #000;
+    font-family: "Montserrat-Medium";
+    font-size: 18px;
+    line-height: 22px;
+}
+
+.banner__button_wrapper {
+    width: 300px;
+    height: 40px;
+    border-radius: 11px;
+}
+
+.banner__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: #3D3B7E;
+    color: #FFF;
+    font-family: "Montserrat-Bold";
+    font-size: 16px;
+    border-radius: 5px;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.banner__button:hover {
+    background-color: #504dbb;
+    transition: all 0.3s;
+}
+
+.banner__images {
+    position: relative;
+    max-width: 650px;
+    width: 100%;
+    height: 100%;
+}
+
+.banner__image_tiket-1 {
+    position: absolute;
+    top: -15px;
+    right: 120px;
+}
+
+.banner__image_tiket-2 {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+
+.banner__images img {
+    width: 440px;
+}

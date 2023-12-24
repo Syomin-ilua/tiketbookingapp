@@ -1,0 +1,134 @@
+.auth__header {
+    width: 100%;
+    
+    border-bottom: 1px solid #777;
+}
+
+.auth__header h3 {
+    color: #333;
+    font-family: "Montserrat-SemiBold";
+    font-size: 18px;
+}
+
+.auth__inputs {
+    display: flex;
+    flex-direction: column;
+    row-gap: 13px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.auth__input_wrapper {
+    width: 100%;
+    height: 35px;
+}
+
+.auth__input_wrapper input {
+    width: 100%;
+    height: 100%;
+    color: #333;
+    font-family: "Montserrat-Regular";
+    font-size: 14px;
+    border-radius: 5px;
+    border: 1px solid #777;
+    background: #FFF;
+    padding: 10px;
+}
+
+.auth__actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+}
+
+.auth__link {
+    background-color: transparent;
+    color: #333;
+    font-family: "Montserrat-Medium";
+    font-size: 14px;
+    transition: all 0.3s;
+}
+
+.auth__link:hover {
+    color: #868686;
+    transition: all 0.3s;
+}
+
+.auth__button {
+    border-radius: 5px;
+    background-color: #3D3B7E;
+    color: #FFF;
+    font-family: "Montserrat-Bold";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    padding: 10px 30px;
+    transition: all 0.3s;
+}
+
+.auth__button:hover {
+    background-color: #333160;
+    transition: all 0.3s;
+}
+.btn__hide_modal {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    background-color: transparent;
+}
+
+.btn__hide_modal span {
+    width: 100%;
+    height: 2px;
+    background-color: #3E3E3E;
+    position: absolute;
+    border-radius: 3px;
+    transition: all 0.2s;
+} 
+
+.btn__hide_modal span:nth-child(1) {
+    transform: translateX(-15px) rotate(-45deg);
+}
+
+.btn__hide_modal span:nth-child(2) {
+    transform: translateX(-15px) rotate(45deg);
+}
+.auth__header_wrapper {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.btn__hide_modal:hover span {
+    background-color: #1c1c1c;
+    transition: all 0.2s;
+}
+
+/* .auth__select_wrapper {
+    height: 35px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    column-gap: 6px;
+    padding: 10px;
+}
+
+.auth__select_wrapper p {
+    color: #333;
+    font-family: "Montserrat-Regular";
+    font-size: 14px;
+} 
+
+.auth__select_wrapper select {
+    cursor: pointer;
+    font-size: 14px;
+    font-family: "Montserrat-SemiBold";
+} */
