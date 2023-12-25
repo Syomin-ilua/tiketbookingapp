@@ -1,7 +1,8 @@
 .navigations__list {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    column-gap: 20px;
+    row-gap: 30px;
 }
 .nav__link {
     cursor: pointer;

@@ -10,7 +10,7 @@
 
 .modal {
     position: fixed;
-    top: 25%;
+    top: 15%;
     left: 5%;
     width: 90%;
     background-color: white;
@@ -26,6 +26,8 @@
         left: calc(50% - 20rem);
     }
 }
+
+
 
 @keyframes slide-down {
     from {

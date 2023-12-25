@@ -34,3 +34,21 @@
         width: 95%;
     }
 }
+
+@media(max-width: 645px) {
+    .logo__wrapper {
+        width: 120px;
+    }
+    .logo__wrapper img {
+        width: 100%;
+    }
+    .where__text_wrapper p {
+        font-size: 14px;
+    }
+}
+
+@media(max-width: 390px) {
+    .where__text_wrapper p {
+        font-size: 12px;
+    }
+}

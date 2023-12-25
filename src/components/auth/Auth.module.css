@@ -1,6 +1,5 @@
 .auth__header {
     width: 100%;
-    
     border-bottom: 1px solid #777;
 }
 
@@ -76,6 +75,7 @@
     background-color: #333160;
     transition: all 0.3s;
 }
+
 .btn__hide_modal {
     position: relative;
     width: 30px;
@@ -90,7 +90,7 @@
     position: absolute;
     border-radius: 3px;
     transition: all 0.2s;
-} 
+}
 
 .btn__hide_modal span:nth-child(1) {
     transform: translateX(-15px) rotate(-45deg);
@@ -99,6 +99,7 @@
 .btn__hide_modal span:nth-child(2) {
     transform: translateX(-15px) rotate(45deg);
 }
+
 .auth__header_wrapper {
     height: 100%;
     display: flex;
@@ -132,3 +133,26 @@
     font-size: 14px;
     font-family: "Montserrat-SemiBold";
 } */
+
+@media (max-width: 645px) {
+    .auth__header h3 {
+        font-size: 15px;
+    }
+    .auth__header_wrapper {
+        padding: 15px;
+    }
+    .btn__hide_modal {
+        width: 25px;
+        height: 25px;
+    }
+    .auth__input_wrapper input {
+        font-size: 12px;
+    }
+    .auth__button {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+    .auth__link {
+        font-size: 13px;
+    }
+}

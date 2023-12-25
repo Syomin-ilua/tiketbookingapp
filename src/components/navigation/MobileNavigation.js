@@ -1,10 +1,15 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { Link } from 'react-scroll';
+import { ReactComponent as EventsIcon } from "../../images/events-images/events-icon.svg";
 import { ReactComponent as ContactsIcon } from "../../images/contacts-images/contact-icon.svg";
-import { ReactComponent as EvenstIcon } from "../../images/events-images/events-icon.svg";
-import styles from "./NavBar.module.css";
+import styles from "./MobileNavigation.module.css";
 
-const NavBar = () => {
+const MobileNavigation = (props) => {
+
+    const hideBurgerMenuHandler = () => {
+        props.onHideBurgerMenu();
+    }
+
     return (
         <nav className={styles["navigations"]}>
             <ul className={styles["navigations__list"]}>
@@ -16,8 +21,9 @@ const NavBar = () => {
                         offset={50}
                         duration={500}
                         className={styles["nav__link"]}
+                        onClick={hideBurgerMenuHandler}
                     >
-                        <EvenstIcon />
+                        <EventsIcon />
                         <p>Мероприятия</p>
                     </Link>
                 </li>
@@ -29,6 +35,7 @@ const NavBar = () => {
                         offset={50}
                         duration={500}
                         className={styles["nav__link"]}
+                        onClick={hideBurgerMenuHandler}
                     >
                         <ContactsIcon />
                         <p>Контакты</p>
@@ -39,4 +46,4 @@ const NavBar = () => {
     )
 }
 
-export default NavBar;
+export default MobileNavigation;

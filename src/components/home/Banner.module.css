@@ -73,3 +73,142 @@
 .banner__images img {
     width: 440px;
 }
+
+@media(max-width: 1025px) {
+    .banner__info {
+        max-width: 400px;
+    }
+
+    .banner__text {
+        font-size: 16px;
+    }
+
+    .banner__logo_wrapper img {
+        width: 130px;
+    }
+
+    .banner__image_tiket-1 img {
+        width: 320px;
+    }
+
+    .banner__image_tiket-2 img {
+        width: 320px;
+    }
+
+    .banner__image_tiket-1 {
+        top: 10px;
+        right: 75px;
+    }
+
+    .banner__image_tiket-2 {
+        top: 15px;
+    }
+
+    .banner__button_wrapper {
+        width: 220px;
+        height: 40px;
+    }
+
+    .banner__button {
+        font-size: 14px;
+    }
+
+    .banner {
+        height: 350px;
+    }
+}
+
+@media(max-width: 900px) {
+    .banner__image_tiket-1 {
+        top: 30px;
+    }
+
+    .banner__image_tiket-2 {
+        top: 30px;
+    }
+
+    .banner__image_tiket-1 img {
+        width: 250px;
+    }
+
+    .banner__image_tiket-2 img {
+        width: 250px;
+    }
+}
+
+@media(max-width: 860px) {
+    .banner__text {
+        font-size: 14px;
+        line-height: 18px;
+    }
+
+    .banner__info {
+        row-gap: 15px;
+    }
+
+    .banner {
+        height: 295px;
+    }
+
+    .banner__image_tiket-1 {
+        top: 20px;
+    }
+
+    .banner__image_tiket-2 {
+        top: 20px;
+    }
+}
+
+@media(max-width: 760px) {
+    .banner__image_tiket-1 {
+        top: 35px;
+        right: 50px;
+    }
+
+    .banner__image_tiket-2 {
+        top: 40px;
+    }
+
+    .banner__image_tiket-1 img {
+        width: 200px;
+    }
+
+    .banner__image_tiket-2 img {
+        width: 200px;
+    }
+
+    .banner__images {
+        max-width: 250px;
+    }
+}
+
+@media(max-width: 680px) {
+    .banner__images {
+        display: none;
+    }
+
+    .banner__info {
+        max-width: 100%;
+    }
+}
+
+@media(max-width: 410px) {
+    .banner__text {
+        font-size: 12px;
+        line-height: 16px;
+    }
+
+    .banner__button_wrapper {
+        width: 200px;
+        height: 35px;
+    }
+    .banner__button {
+        font-size: 13px;
+    }
+    .banner {
+        height: 220px;
+    }
+    .banner__logo_wrapper img {
+        width: 115px;
+    }
+}

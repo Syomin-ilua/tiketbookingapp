@@ -18,7 +18,6 @@ const SignIn = () => {
         disableModalStatus();
     }
 
-
     return (
         <form onSubmit={signInHandler} className={styles["auth"]}>
             <div className={styles["auth__header"]}>

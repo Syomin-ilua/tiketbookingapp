@@ -4,6 +4,7 @@ import styles from "./Header.module.css";
 import Logo from "../../images/icons/logo.svg";
 import { Link, Route, Routes } from 'react-router-dom';
 import NavBar from '../navigation/NavBar';
+import BurgerMenu from '../navigation/BurgerMenu';
 import useAuthModal from '../hooks/useAuthModal';
 
 const Header = () => {
@@ -31,12 +32,23 @@ const Header = () => {
                     </Link>
                     <Routes>
                         <Route path='/' element={
-                            <NavBar />
+                            <div className={styles["navigations__desktop"]}>
+                                <NavBar />
+                            </div>
                         } />
                     </Routes>
-                    <div className={styles["auth__buttons"]}>
-                        <button onClick={loginHandler} className={styles["auth__button"]}>Авторизация</button>
-                        <button onClick={registerHandler} className={styles["auth__button"]}>Регистрация</button>
+                    <div className={styles["header__buttons"]}>
+                        <div className={styles["auth__buttons"]}>
+                            <button onClick={loginHandler} className={styles["auth__button"]}>Авторизация</button>
+                            <button onClick={registerHandler} className={styles["auth__button"]}>Регистрация</button>
+                        </div>
+                        <Routes>
+                            <Route path='/' element={
+                                <div className={styles["burger__menu"]}>
+                                    <BurgerMenu />
+                                </div>
+                            } />
+                        </Routes>
                     </div>
                 </div>
             </div>

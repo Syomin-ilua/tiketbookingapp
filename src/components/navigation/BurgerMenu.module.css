@@ -1,0 +1,16 @@
+
+.burger__menu {
+    
+}
+.burger__menu_content {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 500;
+    background-color: #fff;
+    top: 0px;
+    left: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
