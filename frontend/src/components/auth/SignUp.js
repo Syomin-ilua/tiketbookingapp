@@ -1,15 +1,40 @@
-import React from 'react';
+import React, { useState } from 'react';
 import useAuthModal from '../hooks/useAuthModal';
 import styles from "./Auth.module.css";
+import { useDispatch } from 'react-redux';
+import { registration } from '../../redux-store/user-slice';
 
 const SignUp = () => {
 
     const { disableModalStatus, toggleModal } = useAuthModal();
 
+    const dispatch = useDispatch();
+
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [repetitionPassword, setRepetitionPassword] = useState("");
+
+    const nameChangeHandler = (event) => {
+        setName(event.target.value);
+    }
+
+    const emailChangeHandler = (event) => {
+        setEmail(event.target.value);
+    }
+
+    const passwordChangeHandler = (event) => {
+        setPassword(event.target.value);
+    }
+
+    const repetitionPasswordChangeHandler = (event) => {
+        setRepetitionPassword(event.target.value);
+    }
+
     const signUpHandler = (event) => {
         event.preventDefault();
 
-
+        dispatch(registration({ name, email, password }));
     }
 
     const loginHandler = () => {
@@ -33,23 +58,32 @@ const SignUp = () => {
             </div>
             <div className={styles["auth__inputs"]}>
                 <div className={styles["auth__input_wrapper"]}>
-                    <input placeholder='Введите имя' />
-                </div>
-                {/* <div className={styles["auth__select_wrapper"]}>
-                    <p>Укажите пол: </p>
-                    <select>
-                        <option>мужчина</option>
-                        <option>женщина</option>
-                    </select>
-                </div> */}
-                <div className={styles["auth__input_wrapper"]}>
-                    <input placeholder='Введите эл. почту' />
+                    <input
+                        value={name}
+                        onChange={nameChangeHandler}
+                        placeholder='Введите имя'
+                    />
                 </div>
                 <div className={styles["auth__input_wrapper"]}>
-                    <input placeholder='Введите пароль' />
+                    <input
+                        value={email}
+                        onChange={emailChangeHandler}
+                        placeholder='Введите эл. почту'
+                    />
                 </div>
                 <div className={styles["auth__input_wrapper"]}>
-                    <input placeholder='Повторите пароль' />
+                    <input
+                        value={password}
+                        onChange={passwordChangeHandler}
+                        placeholder='Введите пароль'
+                    />
+                </div>
+                <div className={styles["auth__input_wrapper"]}>
+                    <input
+                        value={repetitionPassword}
+                        onChange={repetitionPasswordChangeHandler}
+                        placeholder='Повторите пароль'
+                    />
                 </div>
             </div>
             <div className={styles["auth__actions"]}>

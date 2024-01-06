@@ -1,13 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from "./Auth.module.css";
 import useAuthModal from '../hooks/useAuthModal';
+import { useDispatch } from 'react-redux';
+import { login } from '../../redux-store/user-slice';
 
 const SignIn = () => {
 
     const { disableModalStatus, toggleModal } = useAuthModal();
 
+    const dispatch = useDispatch();
+
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
+    const emailChangeHandler = (event) => {
+        setEmail(event.target.value);
+    }
+
+    const passwordChangeHandler = (event) => {
+        setPassword(event.target.value);
+    }
+
     const signInHandler = (event) => {
         event.preventDefault();
+
+        dispatch(login({ email, password }));
+
     }
 
     const registerHandler = () => {
@@ -31,14 +49,22 @@ const SignIn = () => {
             </div>
             <div className={styles["auth__inputs"]}>
                 <div className={styles["auth__input_wrapper"]}>
-                    <input placeholder='Введите эл. почту' />
+                    <input
+                        onChange={emailChangeHandler}
+                        value={email}
+                        placeholder='Введите эл. почту'
+                    />
                 </div>
                 <div className={styles["auth__input_wrapper"]}>
-                    <input placeholder='Введите пароль' />
+                    <input
+                        onChange={passwordChangeHandler}
+                        value={password}
+                        placeholder='Введите пароль'
+                    />
                 </div>
             </div>
             <div className={styles["auth__actions"]}>
-                <button className={styles["auth__button"]} type='submit'>Авторизоваться</button>
+                <button className={styles["auth__button"]} onSubmit={signInHandler} type='submit'>Авторизоваться</button>
                 <button className={styles["auth__link"]} onClick={registerHandler} type="button">Зарегистрироваться</button>
             </div>
         </form>

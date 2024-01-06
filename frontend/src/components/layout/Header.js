@@ -6,18 +6,11 @@ import { Link, Route, Routes } from 'react-router-dom';
 import NavBar from '../navigation/NavBar';
 import BurgerMenu from '../navigation/BurgerMenu';
 import useAuthModal from '../hooks/useAuthModal';
+import ProfileMenu from '../user/ProfileMenu';
 
 const Header = () => {
 
-    const { modalStatus, enableModalStatus, disableModalStatus } = useAuthModal();
-
-    const loginHandler = () => {
-        enableModalStatus("login");
-    }
-
-    const registerHandler = () => {
-        enableModalStatus("register");
-    }
+    const { modalStatus, disableModalStatus } = useAuthModal();
 
     const hideModalHandler = () => {
         disableModalStatus();
@@ -38,17 +31,7 @@ const Header = () => {
                         } />
                     </Routes>
                     <div className={styles["header__buttons"]}>
-                        <div className={styles["auth__buttons"]}>
-                            <button onClick={loginHandler} className={styles["auth__button"]}>Авторизация</button>
-                            <button onClick={registerHandler} className={styles["auth__button"]}>Регистрация</button>
-                        </div>
-                        <Routes>
-                            <Route path='/' element={
-                                <div className={styles["burger__menu"]}>
-                                    <BurgerMenu />
-                                </div>
-                            } />
-                        </Routes>
+                        <ProfileMenu/>
                     </div>
                 </div>
             </div>
