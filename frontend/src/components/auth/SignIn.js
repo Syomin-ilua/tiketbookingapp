@@ -25,7 +25,7 @@ const SignIn = () => {
         event.preventDefault();
 
         dispatch(login({ email, password }));
-
+        disableModalStatus();
     }
 
     const registerHandler = () => {

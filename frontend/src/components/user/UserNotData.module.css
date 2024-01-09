@@ -1,0 +1,8 @@
+.user__not_data {
+    font-family: "Montserrat-Regular";
+    font-size: 12px;
+    line-height: 15px;
+    color: red;
+    padding: 10px;
+    border: 1px solid red;
+}

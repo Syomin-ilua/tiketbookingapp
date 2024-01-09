@@ -1,0 +1,150 @@
+.user__info_edit {
+    padding: 30px;
+    display: flex;
+    width: 100%;
+    min-height: 170px;
+    height: 100%;
+    border: 0.5px solid #e7e7e7;
+    border-radius: 10px;
+    column-gap: 50px;
+    align-items: center;
+    position: relative;
+}
+
+.profile__image {
+    min-width: 100px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile__image svg {
+    width: 80%;
+    height: 80%;
+    fill: #333;
+}
+
+.data__title {
+    width: max-content;
+    font-size: 19px;
+    font-family: "Montserrat-Bold";
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.form__change_user {
+    display: flex;
+    align-items: start;
+    column-gap: 50px;
+}
+
+.user__input_wrapper {
+    display: flex;
+    flex-direction: column;
+    row-gap: 6px;
+}
+
+.user__input_edit_wrapper {
+    display: flex;
+    align-items: center;
+    column-gap: 15px;
+    cursor: pointer;
+}
+
+.profile__col {
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+}
+
+.user__input_edit_wrapper h3 {
+    font-size: 15px;
+    font-family: "Montserrat-SemiBold";
+    color: #333;
+    width: max-content;
+}
+
+.user__input {
+    max-width: 200px;
+    width: 100%;
+    height: 30px;
+    border: 0.5px solid #e7e7e7;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 14px;
+    font-family: "Montserrat-Regular";
+    box-shadow: 2px 2px 4px 0px rgba(34, 60, 80, 0.2);
+    transition: all 0.3s;
+}
+
+.user__input:hover {
+    border: 0.5px solid #bdbdbd;
+    transition: all 0.3s;
+}
+
+.user__input:focus {
+    border: 0.5px solid #8c8c8c;
+    transition: all 0.3s;
+}
+
+
+.date__input {
+    max-width: 150px;
+    width: 100%;
+    border: 0.5px solid #e7e7e7;
+    border-radius: 5px;
+    font-size: 12px;
+    font-family: "Montserrat-Regular";
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 2px 2px 4px 0px rgba(34, 60, 80, 0.2);
+}
+
+.date__input:hover {
+    border: 0.5px solid #bdbdbd;
+    transition: all 0.3s;
+}
+
+.date__input:focus {
+    border: 0.5px solid #8c8c8c;
+    transition: all 0.3s;
+}
+.btn__cancel_edit {
+    width: 35px;
+    height: 35px;
+    background-color: transparent;
+    position: absolute;
+    right: 80px;
+    top: 30px;
+}
+
+.btn__cancel_edit svg {
+    width: 100%;
+    height: 100%;
+}
+
+.btn__cancel_edit:hover svg {
+    transform: scale(0.97);
+    transition: all 0.3s;
+}
+
+.btn__save_edit {
+    width: 35px;
+    height: 35px;
+    background-color: transparent;
+    position: absolute;
+    right: 30px;
+    top: 30px;
+    transition: all 0.3s;
+}
+
+.btn__save_edit svg {
+    width: 100%;
+    height: 100%;
+}
+
+.btn__save_edit:hover svg {
+    transform: scale(0.97);
+    transition: all 0.3s;
+}

@@ -10,12 +10,14 @@ import Footer from "./components/layout/Footer";
 import Home from "./pages/Home";
 import Events from "./pages/Events";
 import User from "./pages/User";
+import EventsCategory from './pages/EventsCategory';
 
 // style
 import './App.css';
 import AuthModalProvider from './context-store/AuthModalProvider';
 import { useDispatch } from 'react-redux';
 import { chechAuth } from './redux-store/user-slice';
+import Contacts from './pages/Contacts';
 
 function App() {
 
@@ -23,8 +25,7 @@ function App() {
 
     useEffect(() => {
 
-        if(localStorage.getItem("token")) {
-            console.log("dasd");
+        if (localStorage.getItem("token")) {
             dispatch(chechAuth());
         }
 
@@ -38,10 +39,16 @@ function App() {
                     <Route path='/' element={
                         <Home />
                     } />
+                    <Route path='/events' element={
+                        <EventsCategory />
+                    } />
+                    <Route path="/contacts" element={
+                        <Contacts />
+                    } />
                     <Route path='/events/:eventsName' element={
                         <Events />
                     } />
-                    <Route path='/user' element={
+                    <Route path='/user/*' element={
                         <User />
                     } />
                 </Routes>

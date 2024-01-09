@@ -135,3 +135,17 @@ h6 {
 .btn__open_burger-menu.active__burger_menu span:nth-child(3) {
     display: none;
 }
+
+.active__profile_link {
+	border-bottom: 2px solid #3D3B7E;
+}
+
+.user__warning {
+    font-family: "Montserrat-Medium";
+    font-size: 12px;
+    line-height: 15px;
+    color: red;
+    padding: 10px;
+    border: 1px solid red;
+	margin-bottom: 25px;
+}

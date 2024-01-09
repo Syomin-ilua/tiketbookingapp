@@ -5,6 +5,7 @@ const bcrypt = require("bcryptjs");
 const uuid = require("uuid");
 const tokenService = require("./token-service.js");
 const ApiError = require("../exceptions/api-error.js");
+const userModel = require("../models/user-model.js");
 
 class UserService {
 
@@ -16,7 +17,7 @@ class UserService {
         const hashPassword = await bcrypt.hash(password, 3);
         const activationLink = uuid.v4()
 
-        const user = await UserModel.create({ name, email, password: hashPassword, activatedLink: activationLink });
+        const user = await UserModel.create({ name, email, password: hashPassword, activatedLink: activationLink, patronymic: "", surname: "", tel: "", dateOfBirth: "" });
         await mailService.sendActivationMail(email, `${process.env.API_URL}/auth/activate/${activationLink}`);
 
         const userDto = new UserDto(user);
@@ -27,8 +28,8 @@ class UserService {
     }
 
     async activate(activationLink) {
-        const user = await UserModel.findOne({activatedLink: activationLink});
-        if(!user) {
+        const user = await UserModel.findOne({ activatedLink: activationLink });
+        if (!user) {
             throw ApiError.BadRequest("Некорректная ссылка активации");
         }
         user.isActivated = true;
@@ -36,17 +37,17 @@ class UserService {
     }
 
     async login(email, password) {
-        const user = await UserModel.findOne({email});
-        if(!user) {
+        const user = await UserModel.findOne({ email });
+        if (!user) {
             throw ApiError.BadRequest("Пользователь с таким email не найден!");
         }
         const isPassEqual = await bcrypt.compare(password, user.password);
-        if(!isPassEqual) {
+        if (!isPassEqual) {
             throw ApiError.BadRequest("Не верный пароль!");
         }
         const userDto = new UserDto(user);
-        const tokens = tokenService.generateTokens({...userDto});
-        
+        const tokens = tokenService.generateTokens({ ...userDto });
+
         await tokenService.saveToken(userDto.id, tokens.refreshToken);
         return { ...tokens, user: userDto }
     }
@@ -57,18 +58,34 @@ class UserService {
     }
 
     async refresh(refreshToken) {
-        if(!refreshToken) {
+        if (!refreshToken) {
             throw ApiError.UnauthorizedError();
         }
         const userData = tokenService.validateRefreshToken(refreshToken);
         const tokenFromDb = await tokenService.findToken(refreshToken);
-        if(!userData || !tokenFromDb) {
+        if (!userData || !tokenFromDb) {
             throw ApiError.UnauthorizedError();
         }
         const user = await UserModel.findById(userData.id);
         const userDto = new UserDto(user);
-        const tokens = tokenService.generateTokens({...userDto});
+        const tokens = tokenService.generateTokens({ ...userDto });
+
+        await tokenService.saveToken(userDto.id, tokens.refreshToken);
+        return { ...tokens, user: userDto }
+    }
+
+    async changeAccount(user) {
+        const updateUserData = {
+            name: user.name,
+            surname: user.surname,
+            patronymic: user.patronymic,
+            tel: user.tel,
+            dateOfBirth: user.dateOfBirth
+        }
+        const userData = await UserModel.findOneAndUpdate({ _id: user.id }, updateUserData, { new: true });
+        const userDto = new UserDto(userData);
         
+        const tokens = tokenService.generateTokens({ ...userDto });
         await tokenService.saveToken(userDto.id, tokens.refreshToken);
         return { ...tokens, user: userDto }
     }

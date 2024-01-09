@@ -1,6 +1,7 @@
 import $api from "../http"
-import { AxiosResponse } from "axios"
 
 export default class UserServices {
-    
+    static async changeAccount(id, name, surname, patronymic, dateOfBirth, tel) {
+        return $api.post("/change-account", { id, name, surname, patronymic, dateOfBirth, tel });
+    }
 }

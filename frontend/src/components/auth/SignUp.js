@@ -35,6 +35,7 @@ const SignUp = () => {
         event.preventDefault();
 
         dispatch(registration({ name, email, password }));
+        disableModalStatus();
     }
 
     const loginHandler = () => {

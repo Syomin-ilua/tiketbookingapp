@@ -3,14 +3,15 @@ import styles from "./ProfileMenu.module.css";
 import { FaUser } from "react-icons/fa";
 import useAuthModal from '../hooks/useAuthModal';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { logout } from '../../redux-store/user-slice';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { userActions } from '../../redux-store/user-slice';
 
 const ProfileMenu = () => {
 
-    const { status, /*error,*/ user, isAuth } = useSelector((state) => state.user);
+    const { status, error, user, isAuth } = useSelector((state) => state.user);
+    console.log(error);
+    const navigate = useNavigate();
     const dispatch = useDispatch();
-    // console.log(error);
 
     const { enableModalStatus } = useAuthModal();
 
@@ -25,7 +26,8 @@ const ProfileMenu = () => {
     }
 
     const exitHandler = () => {
-        dispatch(logout());
+        dispatch(userActions.logout());
+        navigate("/");
     }
 
     const hoverHandler = () => {
@@ -42,16 +44,17 @@ const ProfileMenu = () => {
         );
     }
 
-    // if (error) {
-    //     return (
-    //         <p>Произошла ошибка</p>
-    //     )
-    // }
+    if (error) {
+        return (
+            <p>Произошла ошибка</p>
+        )
+    }
 
     return (
         <div onMouseEnter={hoverHandler} onMouseLeave={notHoverHandler} className={styles["profile__menu"]}>
             <div className={styles["profile__svg_wrapper"]}>
                 <FaUser />
+                <p>{!isAuth ? "Гость" : user.name }</p>
             </div>
             {isHoverState &&
                 <div className={styles["profile__menu_wrapper"]}>
@@ -67,11 +70,11 @@ const ProfileMenu = () => {
                     }
                     {isAuth &&
                         <div className={styles["profile__actions"]}>
-                            <div className={styles["username"]}>
-                                <p>{user.email}</p>
+                            <div className={styles['profile__link']}>
+                                <Link onClick={notHoverHandler} to="/user/profile">Профиль</Link>
                             </div>
                             <div className={styles['profile__link']}>
-                                <Link onClick={notHoverHandler} to="/user/profile">Личный кабинет</Link>
+                                <Link onClick={notHoverHandler} to="/user/tickets">Мои билеты</Link>
                             </div>
                             <button className={styles["btn__exit_profile"]} onClick={exitHandler}>Выйти из аккаунта</button>
                         </div>

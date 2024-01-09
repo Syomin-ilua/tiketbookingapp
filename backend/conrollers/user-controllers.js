@@ -6,12 +6,12 @@ class UserController {
     async registration(req, res, next) {
         try {
             const errors = validationResult(req);
-            if(!errors.isEmpty()) {
+            if (!errors.isEmpty()) {
                 return next(ApiError.BadRequest("Ошибка при валидации", errors.array()));
             }
             const { name, email, password } = req.body;
             const userData = await userService.registration(name, email, password);
-            res.cookie("refreshToken", userData.refreshToken, {maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true});
+            res.cookie("refreshToken", userData.refreshToken, { maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true });
             return res.json(userData);
         } catch (e) {
             next(e);
@@ -22,7 +22,7 @@ class UserController {
         try {
             const { email, password } = req.body;
             const userData = await userService.login(email, password);
-            res.cookie("refreshToken", userData.refreshToken, {maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true});
+            res.cookie("refreshToken", userData.refreshToken, { maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true });
             return res.json(userData);
         } catch (e) {
             next(e);
@@ -44,7 +44,7 @@ class UserController {
         try {
             const { refreshToken } = req.cookies;
             const userData = await userService.refresh(refreshToken);
-            res.cookie("refreshToken", userData.refreshToken, {maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true});
+            res.cookie("refreshToken", userData.refreshToken, { maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true });
             return res.json(userData);
         } catch (e) {
             next(e);
@@ -56,6 +56,25 @@ class UserController {
             const activationLink = req.params.link;
             await userService.activate(activationLink);
             return res.redirect(process.env.CLIENT_URL);
+        } catch (e) {
+            next(e);
+        }
+    }
+
+    async changeAccount(req, res, next) {
+        try {
+            const { id, name, surname, patronymic, tel, dateOfBirth } = req.body;
+            const user = { 
+                id: id, 
+                name: name, 
+                surname: surname, 
+                patronymic: patronymic, 
+                tel: tel, 
+                dateOfBirth: dateOfBirth 
+            };
+            const userData = await userService.changeAccount({ ...user });
+            res.cookie("refreshToken", userData.refreshToken, { maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true });
+            return res.json(userData);
         } catch (e) {
             next(e);
         }

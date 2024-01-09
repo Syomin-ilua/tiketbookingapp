@@ -1,0 +1,19 @@
+.user {
+    width: 100%;
+}
+.container {
+    max-width: 1280px;
+    width: 100%;
+    margin: 0 auto;
+}
+.user__wrapper {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+}
+
+@media(max-width: 1280px) {
+    .container {
+        width: 95%;
+    }
+}
